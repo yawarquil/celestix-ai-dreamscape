@@ -2,9 +2,24 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Github, Twitter, MessageCircle, Mail, Heart } from 'lucide-react';
-import celestixLogo from '@/assets/celestix-logo.png';
+import { useTheme } from '@/components/ThemeProvider';
 
 export function Footer() {
+  const { theme } = useTheme();
+
+  const getLogo = () => {
+    // Use light logo for dark themes and dark logo for light themes
+    switch (theme) {
+      case 'light':
+      case 'premium':
+        return '/lovable-uploads/18170051-3e56-4fe0-aeb7-90370853a649.png';
+      case 'dark':
+        return '/lovable-uploads/c1e32f50-9b07-43a9-9141-846b7cfbc86f.png';
+      default:
+        return '/lovable-uploads/c1e32f50-9b07-43a9-9141-846b7cfbc86f.png';
+    }
+  };
+
   return (
     <footer className="glass-card border-t mt-24">
       <div className="container mx-auto px-6 py-12">
@@ -13,7 +28,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <img 
-                src={celestixLogo} 
+                src={getLogo()} 
                 alt="CELESTIX.AI" 
                 className="h-8 w-auto"
               />

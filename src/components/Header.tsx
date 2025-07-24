@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/components/ThemeProvider';
 import { Settings, Moon, Sun, Sparkles, User, History } from 'lucide-react';
-import celestixLogo from '@/assets/celestix-logo.png';
 
 export function Header() {
   const { theme, setTheme } = useTheme();
@@ -12,6 +11,19 @@ export function Header() {
       case 'light': return <Sun className="h-4 w-4" />;
       case 'dark': return <Moon className="h-4 w-4" />;
       case 'premium': return <Sparkles className="h-4 w-4" />;
+    }
+  };
+
+  const getLogo = () => {
+    // Use light logo for dark themes and dark logo for light themes
+    switch (theme) {
+      case 'light':
+      case 'premium':
+        return '/lovable-uploads/18170051-3e56-4fe0-aeb7-90370853a649.png';
+      case 'dark':
+        return '/lovable-uploads/c1e32f50-9b07-43a9-9141-846b7cfbc86f.png';
+      default:
+        return '/lovable-uploads/c1e32f50-9b07-43a9-9141-846b7cfbc86f.png';
     }
   };
 
@@ -29,7 +41,7 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img 
-              src={celestixLogo} 
+              src={getLogo()} 
               alt="CELESTIX.AI" 
               className="h-8 w-auto animate-float"
             />
