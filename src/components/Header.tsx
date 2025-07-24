@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/components/ThemeProvider';
 import { Settings, Moon, Sun, Sparkles, User, History } from 'lucide-react';
+import { SettingsDialog } from '@/components/SettingsDialog';
 
 export function Header() {
   const { theme, setTheme } = useTheme();
@@ -67,14 +68,16 @@ export function Header() {
               <History className="h-4 w-4 mr-2" />
               History
             </Button>
-            <Button 
-              variant="ghost" 
-              size="sm"
-              className="glass-button"
-            >
-              <Settings className="h-4 w-4 mr-2" />
-              Settings
-            </Button>
+            <SettingsDialog>
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="glass-button"
+              >
+                <Settings className="h-4 w-4 mr-2" />
+                Settings
+              </Button>
+            </SettingsDialog>
           </div>
 
           {/* Theme Switcher & User */}
